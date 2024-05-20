@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import SignupPage from "./components/signup-page";
-import Home from "./components/home";
-import Login from "./components/login-page";
-import ForgetPassword from "./components/forgett-password-page";
+import SignupPage from "./pages/signup";
+import Home from "./pages/home";
+import Login from "./pages/login";
+import ForgetPassword from "./pages/forget-password";
 
 const router = createBrowserRouter([
   {
