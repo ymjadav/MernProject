@@ -1,5 +1,21 @@
 import { Link } from "react-router-dom";
+import { login } from "../api/user/user";
+
 export default function Login() {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const userDetail = {};
+
+    for (const [key, value] of formData) {
+      userDetail[key] = value;
+    }
+    // const validation = suite({ ...form, [name]: value });
+    // setResult(validation);
+
+    await login(userDetail);
+  };
+
   return (
     <>
       <section className="  ">
@@ -9,20 +25,21 @@ export default function Login() {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xltext-black text-center">
                 Welcome Again
               </h1>
-              <form className="space-y-4 md:space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                 <div>
                   <label
-                    htmlFor="email"
+                    htmlFor="username"
                     className="block mb-2 text-sm font-medium text-black"
                   >
-                    Email
+                    username
                   </label>
+
                   <input
-                    type="email"
-                    name="email"
-                    id="email"
+                    type="text"
+                    name="username"
+                    id="username"
                     className="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                    placeholder="name@company.com"
+                    placeholder="username"
                     required
                   />
                 </div>

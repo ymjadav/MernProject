@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { signUp } from "../api/user/user";
-
+import suit from "../validation";
 export default function SignupPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -11,7 +11,12 @@ export default function SignupPage() {
     for (const [key, value] of formData) {
       payload[key] = value;
     }
+    const validation = suit(payload);
 
+    if (validation.hasErrors()) {
+      console.log(validation.getErrors());
+      return;
+    }
     await signUp(payload);
     console.log("Completed");
   };
@@ -33,6 +38,7 @@ export default function SignupPage() {
                   >
                     Username
                   </label>
+
                   <input
                     type="text"
                     name="username"

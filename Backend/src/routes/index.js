@@ -1,6 +1,7 @@
 const express = require("express");
 const userRouter = require("./users");
 const signupRouter = require("./signup");
+const loginRouter = require("./login");
 
 const router = express.Router();
 
@@ -12,6 +13,10 @@ const routes = [
   {
     path: "/signup",
     route: signupRouter,
+  },
+  {
+    path: "/login",
+    route: loginRouter,
   },
 ];
 
